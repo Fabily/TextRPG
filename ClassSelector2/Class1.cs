@@ -65,7 +65,46 @@ namespace Selector
             }
             
         }
+        public void Regenerate_Energy()
+        {
+            Console.WriteLine($"{Name_Assasin} dashes away from the fight and hides in the shadows to regain {Energy}!");
+            Energy = 3;
+        }
 
+    }
+
+    public class Paladin
+    {
+        public string Name_Paladin;
+        public string Skill_Paladin;
+        public int Mana_Paladin;
+        public float Experience_Paladin;
+        public float Gold_Paladin;
+
+        public Paladin(string name_Paladin, string skill_Paladin)
+        {
+            Name_Paladin = name_Paladin;
+            Skill_Paladin = skill_Paladin;
+            Mana_Paladin = 5;
+            Experience_Paladin = 0f;
+            Gold_Paladin = 0f;
+        }
+        public void Heal()
+        {
+            if (Mana_Paladin > 0)
+            {
+                Console.WriteLine($"{Name_Paladin} is channeling the energy of the light to {Heal} his teammates!");
+            }
+            else
+            {
+                Console.WriteLine($"{Name_Paladin} is out of {Mana_Paladin}");
+            }
+        }
+        public void Regenerate_Mana_Paladin()
+        {
+            Console.WriteLine($"{Name_Paladin} steps away from the fight and prays to regain {Mana_Paladin}!");
+            Mana_Paladin = 5;
+        }
     }
 }
     
