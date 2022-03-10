@@ -97,7 +97,7 @@ namespace Selector
             }
             else
             {
-                Console.WriteLine($"{Name_Paladin} is out of {Mana_Paladin}");
+                Console.WriteLine($"{Name_Paladin} is out of {Mana_Paladin}!");
             }
         }
         public void Regenerate_Mana_Paladin()
@@ -106,5 +106,41 @@ namespace Selector
             Mana_Paladin = 5;
         }
     }
+    public class Gunslinger
+    {
+        public string Name_Gunslinger;
+        public string Skill_Gunslinger;
+        public int Mana_Gunslinger;
+        public float Experience_Gunslinger;
+        public float Gold_Gunslinger;
+
+        public Gunslinger(string name_Gunslinger, string skill_Gunslinger)
+        {
+            Name_Gunslinger = name_Gunslinger;
+            Skill_Gunslinger = skill_Gunslinger;
+            Mana_Gunslinger = 3;
+            Experience_Gunslinger = 0f;
+            Gold_Gunslinger = 0f;
+
+        }
+        public void Headshot()
+        {
+            if (Mana_Gunslinger > 0)
+            {
+                Console.WriteLine($"{Name_Gunslinger} is laying down and aims at the Head to try and get a {Headshot}!");
+            }
+            else
+            {
+                Console.WriteLine($"{Name_Gunslinger} is out of {Mana_Gunslinger}!");
+            }
+        }
+        public void Regenerate_Mana_Gunslinger()
+        {
+            Console.WriteLine($"{Name_Gunslinger} steps away from the fight and regains {Mana_Gunslinger}!");
+            Mana_Gunslinger = 3;
+        }
+
+    }
 }
+
     
