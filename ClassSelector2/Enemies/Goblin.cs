@@ -11,7 +11,7 @@ namespace Enemies
         {
             base.Name = "Goblin";
             base.Health = 5f;
-            base.Skills.Add(SkillNames.Stick_Attack, new Skill(SkillNames.Stick_Attack, 1f, 0f, 1, 0f));
+            base.Skills.Add(new Skill(SkillNames.Stick_Attack, 1f, 0f, 1, 0f));
             base.BaseMana = 12;
         }
     }

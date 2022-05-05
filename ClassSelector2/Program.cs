@@ -1,6 +1,7 @@
 ﻿using System;
 using Classes;
 using Enemies;
+using System.Collections.Generic;
 
 namespace ClassSelector
 {
@@ -10,9 +11,13 @@ namespace ClassSelector
         private static BaseClass playerClass;
 
         private static Enemy enemy;
+        private static List<Enemy> possibleEnemies = new List<Enemy>();
+        public static readonly Random rnd = new Random();
 
         private static void Main()
         {
+            possibleEnemies.Add(new Goblin());
+
             SelectClass();
             SpawnEnemy();
             //Somehow make a system where you can interact and choose what class you want to create and play as

@@ -34,8 +34,9 @@ namespace Enemies
         /// <summary>
         /// The skills the enemy has
         /// </summary>
-        public Dictionary<SkillNames, Skill> Skills { get; protected set; } = new Dictionary<SkillNames, Skill>();
+        public List<Skill> Skills { get; protected set; } = new List<Skill>();
 
+        //--------------------------------------------------------
         /// <summary>
         /// Base constructor
         /// </summary>
@@ -45,18 +46,44 @@ namespace Enemies
             Health = BaseHealth;
         }
 
+        //-----------------------------------------------------
+        /// <summary>
+        /// Resets the enemy back to it's initial state
+        /// </summary>
+        public void ResetStats()
+        {
+            Mana = BaseMana;
+            Health = BaseHealth;
+        }
+
+        //---------------------------------------------------------
+        /// <summary>
+        /// Attacks the player with a random skill
+        /// </summary>
+        public void AttackUsingRandomSkill()
+        {
+            if (Skills.Count == 0)
+            {
+                Console.WriteLine($"{Name} doesn't have any skills");
+                return;
+            }
+
+            Attack(Skills[ClassSelector.Program.rnd.Next(0, Skills.Count)].Name);
+        }
+
+        //--------------------------------------------------------------------------
         /// <summary>
         /// Attacks the player
         /// </summary>
         /// <param name="skillName">The name of the skill the enemy used</param>
         public void Attack(SkillNames skillName)
         {
-            if (!Skills.ContainsKey(skillName))
+            if (Skills.FindIndex(x => x.Name == skillName) == -1)
             {
                 Console.WriteLine("The enemy doesn't have such spell");
                 return;
             }
-            Skill skill = Skills[skillName];
+            Skill skill = Skills.Find(x => x.Name == skillName);
             if (Mana >= skill.ManaCost && Health >= skill.HealthCost)
             {
                 Console.WriteLine($"Enemy used {skillName.ToString()} and caused {skill.Damage} points damage");

@@ -45,8 +45,9 @@ namespace Classes
         /// <summary>
         /// The skills the class has
         /// </summary>
-        public Dictionary<SkillNames, Skill> Skills { get; protected set; } = new Dictionary<SkillNames, Skill>();
+        public List<Skill> Skills { get; protected set; } = new List<Skill>();
 
+        //---------------------------------------------------------
         /// <summary>
         /// Base constructor
         /// </summary>
@@ -56,6 +57,7 @@ namespace Classes
             Health = BaseHealth;
         }
 
+        //---------------------------------------------------------------
         /// <summary>
         /// Should be called when the player exits combat
         /// </summary>
@@ -65,6 +67,7 @@ namespace Classes
             Mana = BaseMana;
         }
 
+        //-------------------------------------------------------------
         /// <summary>
         /// Regenerate healt or mana
         /// </summary>
@@ -85,6 +88,7 @@ namespace Classes
             }
         }
 
+        //-------------------------------------------------------
         /// <summary>
         /// Casts the spell which was given at the given target
         /// </summary>
@@ -92,12 +96,12 @@ namespace Classes
         /// <param name="target"></param>
         public void CastSpell(SkillNames skillName, Enemy target)
         {
-            if (!Skills.ContainsKey(skillName))
+            if (Skills.FindIndex(x => x.Name == skillName) == -1)
             {
                 Console.WriteLine("The class doesn't have such spell");
                 return;
             }
-            Skill skill = Skills[skillName];
+            Skill skill = Skills.Find(x => x.Name == skillName);
             if (Mana >= skill.ManaCost && Health >= skill.HealthCost)
             {
                 Console.WriteLine($"Casted {skillName.ToString()} and caused {skill.Damage} points damage");

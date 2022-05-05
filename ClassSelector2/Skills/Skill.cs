@@ -27,6 +27,7 @@
         /// </summary>
         public float HealthCost { get; protected set; }
 
+        //----------------------------------------------------------------
         /// <summary>
         /// Create a new skill
         /// </summary>
