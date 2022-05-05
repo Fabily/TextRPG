@@ -1,19 +1,24 @@
 ﻿using System;
-using Selector;
-using Enemys;
+using Classes;
+using Enemies;
 
 namespace ClassSelector
 {
     public class Program
     {
-        static void Main()
+        //The player's class
+        private static BaseClass playerClass;
+
+        private static Enemy enemy;
+
+        private static void Main()
         {
             SelectClass();
             SpawnEnemy();
-            //Somehow make a system where you can interact and choose what class you want to create and play as 
+            //Somehow make a system where you can interact and choose what class you want to create and play as
             //Create enemys and make the player able to fight them
             //Create a skill menu / Skill tree with EXP
-            //Create a shop and make gear upgradable 
+            //Create a shop and make gear upgradable
         }
 
         public static void SelectClass()
@@ -22,39 +27,38 @@ namespace ClassSelector
             Console.WriteLine("Pick Your Class!");
             while (true)
             {
-                string pickclass = Console.ReadLine();
-                string classbutfoolproof = pickclass.ToUpper();
-                if (classbutfoolproof == "WIZARD")
+                switch (Console.ReadLine().ToUpper())
                 {
-                    Console.WriteLine("You have chosen the class Wizard!");
-                    break;
-                }
-                else if (classbutfoolproof == "ASSASSIN")
-                {
-                    Console.WriteLine("You have chosen the class Assassin!");
-                    break;
-                }
-                else if (classbutfoolproof == "GUNSLINGER")
-                {
-                    Console.WriteLine("You have chosen the class Gunslinger!");
-                    break;
-                }
-                else if (classbutfoolproof == "PALADIN")
-                {
-                    Console.WriteLine("You have chosen the class Paladin!");
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("Your input does not match one of the given options!");
+                    case "WIZARD":
+                        Console.WriteLine("You have chosen the class Wizard!");
+                        playerClass = new Wizard();
+                        return;
+                        break;
+
+                    case "ASSASSIN":
+                        Console.WriteLine("You have chosen the class Assassin!");
+                        break;
+
+                    case "GUNSLINGER":
+                        Console.WriteLine("You have chosen the class Gunslinger!");
+                        break;
+
+                    case "PALADIN":
+                        Console.WriteLine("You have chosen the class Paladin!");
+                        break;
+
+                    default:
+                        Console.WriteLine("Your input does not match one of the given options!");
+                        break;
                 }
             }
         }
 
         public static void SpawnEnemy()
         {
-            Console.WriteLine("An Enemy has appeared and has forced you into Battle!");
+            enemy = new Goblin();
 
+            Console.WriteLine($"A{enemy.Name} has appeared and has forced you into Battle!");
         }
     }
 }
