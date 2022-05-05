@@ -1,7 +1,5 @@
-﻿using System;
-using Classes;
+﻿using Classes;
 using Enemies;
-using System.Collections.Generic;
 
 namespace ClassSelector
 {
@@ -42,14 +40,20 @@ namespace ClassSelector
 
                     case "ASSASSIN":
                         Console.WriteLine("You have chosen the class Assassin!");
+                        playerClass = new Assasin();
+                        return;
                         break;
 
                     case "GUNSLINGER":
                         Console.WriteLine("You have chosen the class Gunslinger!");
+                        playerClass = new Gunslinger();
+                        return;
                         break;
 
                     case "PALADIN":
                         Console.WriteLine("You have chosen the class Paladin!");
+                        playerClass = new Paladin();
+                        return;
                         break;
 
                     default:
@@ -63,7 +67,7 @@ namespace ClassSelector
         {
             enemy = new Goblin();
 
-            Console.WriteLine($"A{enemy.Name} has appeared and has forced you into Battle!");
+            Console.WriteLine($"A {enemy.Name} has appeared and has forced you into Battle!");
         }
     }
 }

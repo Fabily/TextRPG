@@ -8,5 +8,8 @@
         Fireball,
         Stick_Attack,
         Bite,
+        BackStab,
+        Heal,
+        Headshot
     }
 }
